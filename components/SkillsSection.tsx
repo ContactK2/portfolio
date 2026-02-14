@@ -1,6 +1,7 @@
 
 import React from 'react';
 import type { Skill } from '../types';
+import { useScrollReveal } from '../hooks';
 
 const languageSkills: Skill[] = [
   { name: 'Python', icon: <i className="fab fa-python text-yellow-400"></i> },
@@ -28,36 +29,41 @@ const osSkills: Skill[] = [
     { name: 'Linux', icon: <i className="fab fa-linux text-yellow-300"></i> },
     { name: 'Windows', icon: <i className="fab fa-windows text-blue-500"></i> },
     { name: 'MacOS', icon: <i className="fab fa-apple text-gray-300"></i> },
-]
+];
 
 const SkillCard: React.FC<{ skill: Skill }> = ({ skill }) => {
     return (
-        <div className="bg-gray-800 border border-gray-700 rounded-lg p-4 flex flex-col items-center justify-center text-center hover:bg-gray-700 hover:border-blue-500 transition-all duration-300">
+        <div className="glass-card rounded-xl p-5 flex flex-col items-center justify-center text-center skill-float glow-hover transition-all duration-300 fade-up cursor-default">
             <div className="text-4xl mb-3">
                 {skill.icon}
             </div>
             <p className="font-semibold text-white text-sm">{skill.name}</p>
         </div>
-    )
-}
+    );
+};
 
-const SkillsCategory: React.FC<{ title: string; skills: Skill[] }> = ({ title, skills }) => (
-    <div className="mb-12">
-        <h3 className="text-2xl font-semibold text-white text-center mb-6">{title}</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-          {skills.map((skill) => (
-            <SkillCard key={skill.name} skill={skill} />
-          ))}
+const SkillsCategory: React.FC<{ title: string; skills: Skill[] }> = ({ title, skills }) => {
+    const ref = useScrollReveal<HTMLDivElement>();
+
+    return (
+        <div className="mb-12">
+            <h3 className="text-2xl font-semibold text-white text-center mb-6">{title}</h3>
+            <div ref={ref} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 stagger-children">
+              {skills.map((skill) => (
+                <SkillCard key={skill.name} skill={skill} />
+              ))}
+            </div>
         </div>
-    </div>
-);
+    );
+};
 
 const SkillsSection: React.FC = () => {
   return (
     <section id="skills" className="py-20 bg-gray-900">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Technical Skills</h2>
+          <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">Technical Skills</h2>
+          <div className="mt-2 h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
           <p className="mt-4 text-lg text-gray-400">A snapshot of the languages, tools, and technologies I work with.</p>
         </div>
         <SkillsCategory title="Programming Languages" skills={languageSkills} />

@@ -11,13 +11,16 @@ const Header: React.FC = () => {
     { href: '#contact', label: 'Contact' },
   ];
 
-  const linkClasses = "block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 hover:text-white md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0 transition-colors duration-300";
+  const linkClasses = "relative block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 hover:text-white md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-400 after:to-purple-400 after:transition-all after:duration-300 hover:after:w-full";
 
   return (
     <header className="bg-gray-900/80 backdrop-blur-sm fixed w-full z-20 top-0 start-0 border-b border-gray-700">
       <nav className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
+          <span className="self-center text-2xl font-bold whitespace-nowrap bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            SC
+          </span>
+          <span className="self-center text-lg font-semibold whitespace-nowrap text-white hidden sm:inline">
             Stockton Cortright
           </span>
         </a>
