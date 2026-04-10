@@ -8,7 +8,7 @@ const projects: Project[] = [
     id: 1,
     title: 'NetSentinel — Agentic Network Intrusion Detection',
     description: 'An autonomous AI-powered network intrusion detection system that reasons through threats and generates incident response actions without human intervention. An ensemble of Random Forest + Isolation Forest models classifies traffic across 72 features, then a LangGraph agent powered by Groq Llama 3.3 70B autonomously investigates incidents, queries AbuseIPDB for IP reputation, and generates structured markdown reports. Events stream live to a Next.js frontend via SSE. Full stack runs in Docker Compose.',
-    imageUrl: 'https://picsum.photos/seed/netsentinel/600/400',
+    imageUrl: '/netsent.jpg',
     tags: ['Python', 'FastAPI', 'LangGraph', 'Groq', 'scikit-learn', 'Next.js', 'PostgreSQL', 'Docker', 'SSE'],
     githubUrl: 'https://github.com/ContactK2/Netsents',
     liveUrl: '',
