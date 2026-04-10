@@ -6,29 +6,38 @@ import { useScrollReveal } from '../hooks';
 const projects: Project[] = [
   {
     id: 1,
-    title: 'Floomba — Indoor Security Drone System',
-    description: 'Designed and built an autonomous indoor security drone for smart homes that detects and tracks people in real time. Uses a Raspberry Pi with an OAK-D Lite stereo camera running a MobileNet-SSD neural network for on-device person detection. The drone autonomously hovers and adjusts yaw to track subjects via MAVLink commands, with captures uploaded to Cloudflare R2 and logged to a Neon PostgreSQL database. A web dashboard provides a live MJPEG video stream, real-time detection alerts via SSE, and searchable activity history.',
-    imageUrl: 'https://picsum.photos/seed/floomba/600/400',
-    tags: ['Python', 'Flask', 'Raspberry Pi', 'OAK-D Lite', 'MobileNet-SSD', 'MAVLink', 'Cloudflare R2', 'Neon PostgreSQL'],
-    githubUrl: '#',
-    liveUrl: 'https://floomba.org',
+    title: 'NetSentinel — Agentic Network Intrusion Detection',
+    description: 'An autonomous AI-powered network intrusion detection system that reasons through threats and generates incident response actions without human intervention. An ensemble of Random Forest + Isolation Forest models classifies traffic across 72 features, then a LangGraph agent powered by Groq Llama 3.3 70B autonomously investigates incidents, queries AbuseIPDB for IP reputation, and generates structured markdown reports. Events stream live to a Next.js frontend via SSE. Full stack runs in Docker Compose.',
+    imageUrl: 'https://picsum.photos/seed/netsentinel/600/400',
+    tags: ['Python', 'FastAPI', 'LangGraph', 'Groq', 'scikit-learn', 'Next.js', 'PostgreSQL', 'Docker', 'SSE'],
+    githubUrl: 'https://github.com/ContactK2/Netsents',
+    liveUrl: '',
   },
   {
     id: 2,
-    title: 'Scout — College Football Recruiting Analytics',
-    description: 'Built a full-stack web application that aggregates and analyzes college football recruiting data from 247Sports, ESPN, and On3 into a unified analytics dashboard. Engineered automated web scrapers for player ratings, physical metrics, and commitment statuses with a deduplication and normalization pipeline. Implemented an AI-powered prospect evaluation system using Google Gemini and Ollama LLMs for trait scores and grade assessments. Features player search/filtering, multi-source rating comparisons, position-based physical benchmarking with z-score analysis, and team recruitment boards.',
-    imageUrl: 'https://picsum.photos/seed/scout/600/400',
-    tags: ['React', 'FastAPI', 'Python', 'SQLite', 'Playwright', 'Tailwind CSS', 'Gemini', 'Ollama'],
-    githubUrl: '#',
-    liveUrl: 'https://osirec.org',
+    title: 'Floomba — Autonomous Indoor Security Drone',
+    description: 'Designed and built an autonomous indoor security drone for smart homes that detects and tracks people in real time. Uses a Raspberry Pi with an OAK-D Lite stereo camera running a MobileNet-SSD neural network for on-device person detection (85–95% accuracy). The drone autonomously adjusts yaw to track subjects via MAVLink commands, with captures uploaded to Cloudflare R2 and logged to a Neon PostgreSQL database. A web dashboard provides a live MJPEG video stream, real-time detection alerts via SSE, and searchable activity history.',
+    imageUrl: 'https://picsum.photos/seed/floomba/600/400',
+    tags: ['Python', 'Flask', 'Raspberry Pi', 'OAK-D Lite', 'MobileNet-SSD', 'MAVLink', 'Cloudflare R2', 'Neon PostgreSQL'],
+    githubUrl: 'https://github.com/ContactK2/sdweb',
+    liveUrl: 'https://youtu.be/Gy3BqxUjURY',
   },
   {
     id: 3,
+    title: 'Osirec — College Football Recruiting Analytics',
+    description: 'Built a full-stack web application that aggregates and analyzes college football recruiting data from 247Sports, ESPN, and On3 into a unified analytics dashboard. Engineered automated web scrapers for player ratings, physical metrics, and commitment statuses with a deduplication and normalization pipeline. Implemented an AI-powered prospect evaluation system using Google Gemini and Ollama LLMs for trait scores and grade assessments. Features player search/filtering, multi-source rating comparisons, and position-based physical benchmarking with z-score analysis.',
+    imageUrl: '/osirec.png',
+    tags: ['React', 'FastAPI', 'Python', 'SQLite', 'Playwright', 'Tailwind CSS', 'Gemini', 'Ollama'],
+    githubUrl: 'https://github.com/ContactK2/OSIREC',
+    liveUrl: 'https://osirec.org',
+  },
+  {
+    id: 4,
     title: 'RateMyApt — Apartment Review Platform',
     description: 'Built and deployed a full-stack apartment review platform enabling university students to share honest, anonymous housing experiences. Features property search with fuzzy matching, a five-pillar scoring system, document-based review verification, admin moderation workflows with email alerts, and a mobile-responsive dark-themed UI. Seeded with 22+ properties near UTA and prepared for beta launch targeting student renters.',
-    imageUrl: 'https://picsum.photos/seed/ratemyapt/600/400',
+    imageUrl: '/rate.png',
     tags: ['Next.js', 'React', 'Tailwind CSS', 'PostgreSQL', 'Clerk', 'Cloudflare R2', 'Vercel', 'Sentry'],
-    githubUrl: '#',
+    githubUrl: 'https://github.com/ContactK2/ratemyapt',
     liveUrl: 'https://ratemyapt.org',
   },
 ];
@@ -78,7 +87,7 @@ const ProjectsSection: React.FC = () => {
           <div className="mt-2 h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full" />
           <p className="mt-4 text-lg text-gray-400">A selection of my work and technical experience.</p>
         </div>
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 stagger-children">
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-8 stagger-children">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
