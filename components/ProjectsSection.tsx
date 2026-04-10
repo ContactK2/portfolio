@@ -40,15 +40,30 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/ContactK2/ratemyapt',
     liveUrl: 'https://ratemyapt.org',
   },
+  {
+    id: 5,
+    title: 'toffyj — Crypto Trading Bot',
+    description: 'An end-to-end crypto trading system with a backtesting engine, ML regime classifier, and live paper trading bot. Tests strategies on historical OHLCV data with realistic fees and slippage, uses a RandomForest classifier to detect trending vs. ranging market conditions, and deploys the optimal strategy in real time via Binance testnet. Includes a Streamlit dashboard with equity curves, trade logs, and regime overlays.',
+    tags: ['Python', 'CCXT', 'scikit-learn', 'Pandas', 'Streamlit', 'APScheduler', 'Binance API'],
+    githubUrl: 'https://github.com/ContactK2/tiffyj',
+  },
+  {
+    id: 6,
+    title: 'NCAA Tournament Bracket Simulator',
+    description: 'A March Madness bracket simulation engine that uses KenPom adjusted efficiency metrics and the Log5 formula to calculate win probabilities for every potential matchup. Simulates the full tournament thousands of times to generate bracket projections, upset probabilities, and Final Four/Championship likelihoods. The 2026 simulation projected Duke as the national champion.',
+    tags: ['Python', 'KenPom', 'Log5', 'Sports Analytics', 'Probabilistic Modeling'],
+  },
 ];
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   return (
     <div className="group relative flex flex-col rounded-xl glass-card glow-hover shadow-lg overflow-hidden transition-all duration-300 fade-up">
-      <div className="overflow-hidden relative">
-        <img src={project.imageUrl} alt={project.title} className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700" />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      </div>
+      {project.imageUrl && (
+        <div className="overflow-hidden relative">
+          <img src={project.imageUrl} alt={project.title} className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </div>
+      )}
       <div className="p-6 flex flex-col flex-grow">
         <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
         <p className="text-gray-400 text-sm flex-grow">{project.description}</p>
@@ -61,10 +76,12 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
         </div>
       </div>
       <div className="p-6 pt-0 mt-auto flex justify-start space-x-4">
-        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110">
-          <i className="fab fa-github fa-lg"></i>
-          <span className="sr-only">GitHub</span>
-        </a>
+        {project.githubUrl && (
+          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110">
+            <i className="fab fa-github fa-lg"></i>
+            <span className="sr-only">GitHub</span>
+          </a>
+        )}
         {project.liveUrl && (
           <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110">
             <i className="fas fa-external-link-alt fa-lg"></i>
